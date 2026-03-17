@@ -42,7 +42,7 @@ export default function Education() {
             </div>
             <div className="mt-4 md:mt-0 text-left md:text-right">
               <span className="meta text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                Expected December 2025
+                December 2025
               </span>
             </div>
           </div>
@@ -53,16 +53,15 @@ export default function Education() {
             </h4>
             <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4">
               <em className="emphasis">
-                "Analyzing AI Tool Adoption Patterns in Software Development: 
-                A Study of Developer Productivity and Code Quality Metrics"
+                "Building a Wizard-of-Oz Platform for Evaluating LLM Conversational Quality"
               </em>
             </p>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-              Research focuses on the measurable impact of AI-assisted development tools 
-              on programmer efficiency, code maintainability, and software quality. 
-              The study examines adoption patterns across different experience levels 
-              and project types, providing insights into how AI tools are reshaping 
-              modern software development practices.
+              Designed and built a research platform for controlled evaluation of LLM 
+              response quality using Wizard-of-Oz methodology. The system supports three 
+              experimental conditions (direct-AI, human-mediated AI, direct-human) to study 
+              how tone, empathy, refusal strategies, and formatting affect user trust and 
+              satisfaction in conversational AI systems.
             </p>
           </div>
         </motion.div>

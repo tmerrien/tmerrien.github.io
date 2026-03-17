@@ -6,34 +6,44 @@ import ProjectCard from './ProjectCard';
 
 const projects = [
   {
+    title: 'WoZ Platform for LLM Evaluation',
+    description: 'Honours thesis research platform enabling controlled evaluation of LLM conversational quality using Wizard-of-Oz methodology. Supports three experimental conditions to study how tone, empathy, and refusal strategies affect user trust in AI systems.',
+    imageSrc: null,
+    liveUrl: 'https://github.com/tmerrien/oz-upei',
+    repoUrl: 'https://github.com/tmerrien/oz-upei',
+    isProprietary: false,
+    tech: ['Next.js', 'Supabase', 'Ollama', 'Vercel AI SDK', 'TypeScript'],
+    category: 'AI Research'
+  },
+  {
+    title: 'Notto — React Component Library',
+    description: 'A production-ready React component library bridging the gap between basic component libraries and full starter kits. Inspired by SwiftUI and Vue3 patterns, built with Next.js 15 and shadcn/ui.',
+    imageSrc: null,
+    liveUrl: 'https://github.com/tmerrien/notto',
+    repoUrl: 'https://github.com/tmerrien/notto',
+    isProprietary: false,
+    tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS v4', 'shadcn/ui'],
+    category: 'Open Source'
+  },
+  {
     title: 'WorkSource Alliance ATS Platform',
-    description: 'A comprehensive applicant tracking system built with Next.js, Supabase, and Makerkit. Serves non-profits and institutions with advanced applicant curation, employer relationship management, and workflow automation features.',
+    description: 'A full-scale applicant tracking system serving non-profits and institutions. Led architecture and a 7-member development team. Built with Next.js, Supabase, and FastAPI.',
     imageSrc: '/logos/WorkSource-Alliance-Logo-gradient-1280x301.png',
     liveUrl: 'https://beta.worksourcealliance.ca',
     repoUrl: null,
     isProprietary: true,
-    tech: ['Next.js', 'Supabase', 'TypeScript', 'Tailwind'],
+    tech: ['Next.js', 'Supabase', 'FastAPI', 'TypeScript'],
     category: 'Enterprise Platform'
   },
   {
-    title: 'Kirkwood Gaps Analysis',
-    description: 'A physics research project investigating orbital resonance gaps in the asteroid belt. Combines computational analysis with theoretical physics to model and visualize the gravitational dynamics.',
+    title: 'Kirkwood Gaps Simulation',
+    description: 'Physics simulation of orbital resonance gaps in the asteroid belt due to Jupiter\'s gravitational perturbations. Uses numerical integration to model how resonances clear specific regions over time.',
     imageSrc: null,
     liveUrl: 'https://github.com/tmerrien/kirkwood_gaps',
-    repoUrl: null,
+    repoUrl: 'https://github.com/tmerrien/kirkwood_gaps',
     isProprietary: false,
     tech: ['Python', 'NumPy', 'Matplotlib', 'Physics'],
-    category: 'Research Project'
-  },
-  {
-    title: 'ADL Foods Website Enhancement',
-    description: 'Frontend development and infrastructure improvements for ADL Foods\' commercial website. Focused on UX/UI enhancements, performance optimization, and maintaining high availability.',
-    imageSrc: '/logos/NEW-ADL-LOGO-04.png',
-    liveUrl: 'https://adlfoods.ca',
-    repoUrl: null,
-    isProprietary: true,
-    tech: ['React', 'WordPress', 'PHP', 'CSS'],
-    category: 'Web Development'
+    category: 'Computational Physics'
   }
 ];
 

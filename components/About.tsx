@@ -17,7 +17,7 @@ export default function About() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
 
-  const words = "I'm a Full-Stack Developer with a Computer Science background from UPEI. I specialize in building modern web applications and exploring AI-assisted development tools to enhance productivity and code quality.".split(" ");
+  const words = "I'm an AI-focused software engineer building production conversational AI systems. I specialize in RAG architectures, agent-driven workflows, and LLM UX — backed by published research on evaluating human-AI interaction quality.".split(" ");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -140,9 +140,9 @@ export default function About() {
                   transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
                   viewport={{ once: true }}
                 >
-                  2025
+                  4+
                 </motion.div>
-                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">Graduation</div>
+                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">Years Experience</div>
               </div>
               
               <div className="text-center px-2">
@@ -153,9 +153,9 @@ export default function About() {
                   transition={{ delay: 1.4, duration: 0.5, type: "spring" }}
                   viewport={{ once: true }}
                 >
-                  AI
+                  RAG
                 </motion.div>
-                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">Focus Area</div>
+                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">Production AI</div>
               </div>
               
               <div className="text-center px-2">
@@ -166,9 +166,9 @@ export default function About() {
                   transition={{ delay: 1.6, duration: 0.5, type: "spring" }}
                   viewport={{ once: true }}
                 >
-                  UPEI
+                  BSc
                 </motion.div>
-                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">University</div>
+                <div className="text-xs sm:text-sm uppercase tracking-wide text-gray-600 dark:text-gray-400 leading-tight">CS Honours, UPEI</div>
               </div>
             </motion.div>
           </motion.div>
@@ -211,7 +211,7 @@ export default function About() {
                   >
                     <span className="text-red-500 dark:text-red-400">role</span>
                     <span className="text-gray-700 dark:text-gray-300">:</span>{" "}
-                    <span className="text-green-600 dark:text-green-400">'Student & Developer'</span>,
+                    <span className="text-green-600 dark:text-green-400">'AI & Software Engineer'</span>,
                   </motion.div>
                   
                   <motion.div
@@ -222,7 +222,7 @@ export default function About() {
                   >
                     <span className="text-red-500 dark:text-red-400">focus</span>
                     <span className="text-gray-700 dark:text-gray-300">:</span>{" "}
-                    <span className="text-green-600 dark:text-green-400">'AI-assisted tools'</span>,
+                    <span className="text-green-600 dark:text-green-400">'RAG, Agents, LLM UX'</span>,
                   </motion.div>
                   
                   <motion.div
@@ -231,9 +231,9 @@ export default function About() {
                     transition={{ delay: 1.4, duration: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <span className="text-red-500 dark:text-red-400">passion</span>
+                    <span className="text-red-500 dark:text-red-400">research</span>
                     <span className="text-gray-700 dark:text-gray-300">:</span>{" "}
-                    <span className="text-green-600 dark:text-green-400">'Innovation'</span>,
+                    <span className="text-green-600 dark:text-green-400">'Human-AI Interaction'</span>,
                   </motion.div>
                   
                   <motion.div
@@ -244,7 +244,7 @@ export default function About() {
                   >
                     <span className="text-red-500 dark:text-red-400">location</span>
                     <span className="text-gray-700 dark:text-gray-300">:</span>{" "}
-                    <span className="text-green-600 dark:text-green-400">'PEI, Canada'</span>
+                    <span className="text-green-600 dark:text-green-400">'Ottawa, Canada'</span>
                   </motion.div>
                 </div>
                 

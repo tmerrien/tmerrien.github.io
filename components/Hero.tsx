@@ -80,12 +80,12 @@ export default function Hero() {
           className="space-y-2 sm:space-y-4"
         >
           <p className="text-lg sm:text-xl lg:text-2xl text-white/90 font-light">
-            Full-Stack Developer
+            AI &amp; Software Engineer
           </p>
           <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed px-4">
-            Building modern web applications with a focus on{' '}
-            <span className="text-teal-300 font-medium">AI-assisted development</span>
-            {' '}and clean, scalable solutions
+            Building production{' '}
+            <span className="text-teal-300 font-medium">conversational AI systems</span>
+            {' '}— RAG pipelines, agent architectures, and LLM-driven workflows
           </p>
         </motion.div>
       </div>

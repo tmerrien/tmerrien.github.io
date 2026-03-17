@@ -21,30 +21,53 @@ export default function Experience() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
-                    Lead Developer
+                    Developer
                   </h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium">WorkSource Alliance</p>
+                  <p className="text-blue-600 dark:text-blue-400 font-medium">Revio — AI Sales CRM</p>
                 </div>
+                <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">Dec 2025 – Present</span>
               </div>
               <ul className="text-gray-600 dark:text-gray-300 space-y-2 text-sm sm:text-base">
-                <li>• Lead development of the new ATS platform (beta.worksourcealliance.ca) serving non-profits and institutions</li>
-                <li>• Architect and implement solutions using Next.js, Supabase, and Makerkit for complex applicant curation workflows</li>
-                <li>• Oversee all infrastructure, deployments, and maintenance across the organization's technology stack</li>
-                <li>• Manage employer relationship systems and optimize platform performance for high-volume usage</li>
+                <li>• Building and maintaining a production RAG system powering AI-driven customer engagement across social media DMs</li>
+                <li>• Developing conversational AI agents for sales funnel automation: lead qualification, call booking, scheduled follow-ups, and human handovers</li>
+                <li>• Implementing conversation classification pipelines to route and prioritize interactions based on intent</li>
+                <li>• Contributing to an AI autopilot system that automates outbound outreach and end-to-end prospect conversations</li>
+                <li>• Building internal tools and customer service infrastructure to support platform operations at scale</li>
               </ul>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-              <div className="mb-4">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
-                  Frontend Developer & Infrastructure Support
-                </h3>
-                <p className="text-blue-600 dark:text-blue-400 font-medium">ADL Foods</p>
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+                    Senior Developer
+                  </h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-medium">WorkSource Alliance</p>
+                </div>
+                <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">2023 – Dec 2025</span>
               </div>
               <ul className="text-gray-600 dark:text-gray-300 space-y-2 text-sm sm:text-base">
-                <li>• Provide frontend development and infrastructure support for ADL's web presence, primarily adlfoods.ca</li>
-                <li>• Implement UX/UI enhancements and performance optimizations for high-traffic commercial website</li>
-                <li>• Maintain and improve existing systems while ensuring optimal user experience and site reliability</li>
+                <li>• Led all technology decision-making across the organization's internal and external digital systems</li>
+                <li>• Architected and built a full-scale applicant tracking system using Next.js, Supabase, and FastAPI; managed a 7-member development team</li>
+                <li>• Designed system architecture for the job board platform serving non-profits and institutions across PEI</li>
+                <li>• Built scalable deployment infrastructure connecting website, job board, and ATS via Vercel</li>
+              </ul>
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">
+                    Solution Consultant
+                  </h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-medium">Amalgamated Dairies Limited (ADL)</p>
+                </div>
+                <span className="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">2024 – 2025</span>
+              </div>
+              <ul className="text-gray-600 dark:text-gray-300 space-y-2 text-sm sm:text-base">
+                <li>• Conducted gap analysis of internal marketing and operations platforms to identify modernization opportunities</li>
+                <li>• Developed a B2B food show booking management solution using Next.js and PostgreSQL</li>
+                <li>• Led migration of legacy WordPress infrastructure to modern, maintainable components</li>
               </ul>
             </div>
           </div>

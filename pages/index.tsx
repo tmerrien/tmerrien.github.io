@@ -14,7 +14,7 @@ export default function Home() {
         <title>Tanguy Merrien – Portfolio</title>
         <meta 
           name="description" 
-          content="Portfolio of Tanguy Merrien, a passionate developer creating digital experiences with modern web technologies."
+          content="Portfolio of Tanguy Merrien — AI & Software Engineer specializing in conversational AI, RAG architectures, and agent-driven systems."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
