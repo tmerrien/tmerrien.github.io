@@ -29,7 +29,7 @@ export default function Layout({ children }: LayoutProps) {
   const sections = ['about', 'experience', 'education', 'projects', 'contact'];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       <nav className="fixed top-0 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 z-50">
         <div className="max-w-3xl mx-auto px-6 flex justify-between items-center h-12">
           <a href="#home" className="text-sm font-semibold text-gray-900 dark:text-white">TM</a>
