@@ -1,9 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="py-8 px-6 max-w-3xl mx-auto border-t border-gray-200 dark:border-gray-800 mt-12">
-      <p className="text-xs text-gray-400 dark:text-gray-600">
-        © {new Date().getFullYear()} Tanguy Merrien
-      </p>
+    <footer className="py-8 px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
+      <div className="flex justify-between items-center">
+        <p className="text-xs text-[#A1A1AA] dark:text-[#52525B] font-mono">
+          &copy; {new Date().getFullYear()} Tanguy Merrien
+        </p>
+        <p className="text-xs text-[#A1A1AA] dark:text-[#52525B]">
+          Ottawa, Canada
+        </p>
+      </div>
     </footer>
   );
 }
