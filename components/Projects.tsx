@@ -31,7 +31,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
+    <section id="projects" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
       <h2 className="text-xs font-mono text-[#2563EB] dark:text-[#60A5FA] mb-10 tracking-wide">
         PROJECTS
       </h2>
@@ -42,7 +42,7 @@ export default function Projects() {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block p-6 rounded-lg border border-[#E4E4E7] dark:border-[#27272A] bg-white dark:bg-[#18181B] hover:border-[#2563EB] dark:hover:border-[#60A5FA] transition-all duration-200 cursor-pointer"
+            className="group block p-5 sm:p-6 rounded-lg border border-[#E4E4E7] dark:border-[#27272A] bg-white dark:bg-[#18181B] hover:border-[#2563EB] dark:hover:border-[#60A5FA] active:scale-[0.98] transition-all duration-200 cursor-pointer"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="text-[10px] font-mono font-bold text-[#2563EB] dark:text-[#60A5FA] tracking-wider uppercase">

@@ -8,6 +8,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
@@ -40,11 +41,22 @@ export default function Layout({ children }: LayoutProps) {
               <a
                 key={s}
                 href={`#${s}`}
-                className="hidden sm:inline text-xs font-medium text-[#64748B] hover:text-[#2563EB] dark:text-[#94A3B8] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer"
+                className="hidden md:inline text-xs font-medium text-[#64748B] hover:text-[#2563EB] dark:text-[#94A3B8] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer"
               >
                 {s}
               </a>
             ))}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden w-8 h-8 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+              )}
+            </button>
             <button
               onClick={toggleTheme}
               className="w-8 h-8 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
@@ -58,6 +70,20 @@ export default function Layout({ children }: LayoutProps) {
             </button>
           </div>
         </div>
+        {menuOpen && (
+          <div className="md:hidden border-t border-[#E4E4E7] dark:border-[#27272A] px-6 py-3 flex flex-wrap gap-4">
+            {sections.map((s) => (
+              <a
+                key={s}
+                href={`#${s}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-sm font-medium text-[#64748B] hover:text-[#2563EB] dark:text-[#94A3B8] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer capitalize"
+              >
+                {s}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
       <main className="pt-14">{children}</main>
     </div>

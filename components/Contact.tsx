@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
+    <section id="contact" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
       <h2 className="text-xs font-mono text-[#2563EB] dark:text-[#60A5FA] mb-6 tracking-wide">
         CONTACT
       </h2>
@@ -8,7 +8,7 @@ export default function Contact() {
         Open to opportunities in AI/agent engineering, conversational AI, and LLM infrastructure.
         Based in Ottawa, Canada. Available remote.
       </p>
-      <div className="flex flex-wrap gap-6">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
         <a
           href="mailto:tmerrien@outlook.com"
           className="inline-flex items-center gap-2 text-sm font-medium text-[#18181B] dark:text-white hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer"
