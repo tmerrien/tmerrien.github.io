@@ -99,7 +99,7 @@ export default function Layout({ children }: LayoutProps) {
         </Dock>
       </div>
 
-      <main className="pt-14 md:pt-0 pb-24 md:pb-28">{children}</main>
+      <main className="pt-14 md:pt-6 pb-28 md:pb-32">{children}</main>
     </div>
   );
 }

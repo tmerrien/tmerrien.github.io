@@ -8,14 +8,14 @@ export default function Education() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="education" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto">
-      <Separator className="mb-12" />
+    <section id="education" className="py-8 sm:py-12 px-5 sm:px-6 max-w-4xl mx-auto">
+      <Separator className="mb-8" />
       <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
-        <h2 className="text-xs font-mono gradient-text font-bold mb-10 tracking-wide">
+        <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">
           EDUCATION &amp; RESEARCH
         </h2>
 
-        <div className="stagger grid sm:grid-cols-[200px_1fr] gap-4 mb-10">
+        <div className="stagger grid sm:grid-cols-[200px_1fr] gap-4 mb-6">
           <div>
             <Badge variant="outline" className="font-mono text-xs">Dec 2025</Badge>
           </div>

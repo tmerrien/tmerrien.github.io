@@ -70,10 +70,10 @@ export default function Hero() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section id="home" className="relative pt-20 sm:pt-28 pb-16 sm:pb-24 px-5 sm:px-6 max-w-4xl mx-auto overflow-hidden">
+    <section id="home" className="relative pt-20 sm:pt-24 pb-10 sm:pb-14 px-5 sm:px-6 max-w-4xl mx-auto overflow-hidden">
       <ParticleCanvas />
       <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''} relative z-10`}>
-        <AnimatedGradientText className="mb-6">
+        <AnimatedGradientText className="mb-6 !mx-0">
           <span className="text-xs font-mono font-bold tracking-wide">AI & SOFTWARE ENGINEER</span>
         </AnimatedGradientText>
         <h1 className="text-4xl sm:text-6xl font-bold mb-4 sm:mb-6 tracking-tight leading-[0.95]">

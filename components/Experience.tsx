@@ -49,10 +49,10 @@ export default function Experience() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="experience" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto">
-      <Separator className="mb-12" />
+    <section id="experience" className="py-8 sm:py-12 px-5 sm:px-6 max-w-4xl mx-auto">
+      <Separator className="mb-8" />
       <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
-        <h2 className="text-xs font-mono gradient-text font-bold mb-10 tracking-wide">
+        <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">
           EXPERIENCE
         </h2>
         <Timeline positions="left">
@@ -61,8 +61,8 @@ export default function Experience() {
               <TimelineHeading>
                 {job.role} <span className="text-muted-foreground font-normal">— {job.company}</span>
               </TimelineHeading>
-              <TimelineDot status={job.status} />
-              <TimelineLine done={job.status === 'done'} />
+              <TimelineDot status={job.status === 'current' ? 'current' : 'done'} />
+              {i < jobs.length - 1 && <TimelineLine done={job.status === 'done'} />}
               <TimelineContent>
                 <div className="flex items-center gap-2 mb-3">
                   <Badge variant="outline" className="font-mono text-[11px]">{job.period}</Badge>

@@ -39,10 +39,10 @@ export default function Projects() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="projects" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto">
-      <Separator className="mb-12" />
+    <section id="projects" className="py-8 sm:py-12 px-5 sm:px-6 max-w-4xl mx-auto">
+      <Separator className="mb-8" />
       <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
-        <h2 className="text-xs font-mono gradient-text font-bold mb-10 tracking-wide">
+        <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">
           PROJECTS
         </h2>
         <div className="grid sm:grid-cols-2 gap-6">

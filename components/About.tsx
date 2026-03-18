@@ -13,8 +13,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto">
-      <Separator className="mb-12" />
+    <section id="about" className="py-8 sm:py-12 px-5 sm:px-6 max-w-4xl mx-auto">
+      <Separator className="mb-8" />
       <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
         <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">
           ABOUT
