@@ -13,6 +13,9 @@ export default function Layout({ children }: LayoutProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    // Mark that JS has loaded so animations can start
+    document.documentElement.classList.add('js-loaded');
+
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDarkMode = (saved || (prefersDark ? 'dark' : 'light')) === 'dark';
