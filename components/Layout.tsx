@@ -48,7 +48,7 @@ export default function Layout({ children }: LayoutProps) {
             ))}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-8 h-8 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
               aria-label="Toggle menu"
             >
               {menuOpen ? (
@@ -59,7 +59,7 @@ export default function Layout({ children }: LayoutProps) {
             </button>
             <button
               onClick={toggleTheme}
-              className="w-8 h-8 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
+              className="w-10 h-10 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (

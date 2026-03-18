@@ -68,6 +68,13 @@ h1, h2, h3, h4 {
   transform: translateY(-2px);
 }
 
+/* Focus states for keyboard navigation */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .stagger { opacity: 1; transform: none; transition: none; }
