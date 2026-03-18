@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Button } from './ui/button';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -30,25 +31,27 @@ export default function Layout({ children }: LayoutProps) {
   const sections = ['about', 'experience', 'projects', 'education', 'contact'];
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] text-[#1E293B] dark:text-[#E2E8F0] transition-colors duration-200">
-      <nav className="fixed top-0 w-full bg-[#FAFAFA]/90 dark:bg-[#09090B]/90 backdrop-blur-sm border-b border-[#E4E4E7] dark:border-[#27272A] z-50">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
+      <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50">
         <div className="max-w-4xl mx-auto px-6 flex justify-between items-center h-14">
-          <a href="#home" className="font-mono font-bold text-sm text-[#18181B] dark:text-white tracking-tight">
+          <a href="#home" className="font-mono font-bold text-sm tracking-tight">
             tanguy.merrien
           </a>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             {sections.map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
-                className="hidden md:inline text-xs font-medium text-[#64748B] hover:text-[#2563EB] dark:text-[#94A3B8] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer"
+                className="hidden md:inline text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
               >
                 {s}
               </a>
             ))}
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
+              className="md:hidden w-10 h-10 cursor-pointer"
               aria-label="Toggle menu"
             >
               {menuOpen ? (
@@ -56,10 +59,12 @@ export default function Layout({ children }: LayoutProps) {
               ) : (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
               )}
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleTheme}
-              className="w-10 h-10 flex items-center justify-center rounded-md text-[#64748B] hover:text-[#18181B] dark:text-[#94A3B8] dark:hover:text-white hover:bg-[#E4E4E7] dark:hover:bg-[#27272A] transition-all duration-200 cursor-pointer"
+              className="w-10 h-10 cursor-pointer"
               aria-label="Toggle theme"
             >
               {isDark ? (
@@ -67,17 +72,17 @@ export default function Layout({ children }: LayoutProps) {
               ) : (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
               )}
-            </button>
+            </Button>
           </div>
         </div>
         {menuOpen && (
-          <div className="md:hidden border-t border-[#E4E4E7] dark:border-[#27272A] px-6 py-3 flex flex-wrap gap-4">
+          <div className="md:hidden border-t border-border px-6 py-3 flex flex-wrap gap-4 bg-background">
             {sections.map((s) => (
               <a
                 key={s}
                 href={`#${s}`}
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-[#64748B] hover:text-[#2563EB] dark:text-[#94A3B8] dark:hover:text-[#60A5FA] transition-colors duration-200 cursor-pointer capitalize"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer capitalize"
               >
                 {s}
               </a>

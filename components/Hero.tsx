@@ -1,5 +1,7 @@
 'use client';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { buttonVariants } from './ui/button';
+import { cn } from '@/lib/utils';
 
 export default function Hero() {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -10,25 +12,19 @@ export default function Hero() {
         <p className="text-xs font-mono gradient-text font-bold mb-4 tracking-wide">
           AI &amp; SOFTWARE ENGINEER
         </p>
-        <h1 className="text-3xl sm:text-5xl font-bold text-[#18181B] dark:text-white mb-4 sm:mb-6 tracking-tight leading-tight">
+        <h1 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
           Tanguy Merrien
         </h1>
         <div className="accent-line mb-6" />
-        <p className="text-lg text-[#64748B] dark:text-[#94A3B8] leading-relaxed max-w-2xl">
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
           Building production conversational AI systems — RAG pipelines, agent architectures,
           and LLM-driven workflows. Published research on evaluating human-AI interaction quality.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] text-white text-sm font-medium rounded-md hover:opacity-90 transition-opacity duration-200 cursor-pointer"
-          >
+          <a href="#contact" className={cn(buttonVariants({ size: "lg" }), "bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:opacity-90 text-white cursor-pointer")}>
             Get in touch
           </a>
-          <a
-            href="#projects"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border border-[#E4E4E7] dark:border-[#3F3F46] text-sm font-medium rounded-md text-[#18181B] dark:text-[#E2E8F0] hover:bg-[#F4F4F5] dark:hover:bg-[#18181B] transition-colors duration-200 cursor-pointer"
-          >
+          <a href="#projects" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "cursor-pointer")}>
             View projects
           </a>
         </div>
