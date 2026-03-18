@@ -197,6 +197,12 @@ a:focus-visible, button:focus-visible {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    backgroundPosition: var(--bg-size) 0;
+    }
+  }
 }
 
 @layer base {

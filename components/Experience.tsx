@@ -1,5 +1,6 @@
 'use client';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { Timeline, TimelineItem, TimelineDot, TimelineContent, TimelineHeading, TimelineLine } from './ui/timeline';
 import { Badge } from './ui/badge';
 import { Separator } from './ui/separator';
 
@@ -9,23 +10,25 @@ const jobs = [
     company: 'Revio',
     label: 'AI Sales CRM',
     period: 'Dec 2025 — Present',
+    status: 'current' as const,
     points: [
-      'Building and maintaining a production RAG system powering AI-driven customer engagement across social media DMs',
-      'Developing conversational AI agents for sales funnel automation: lead qualification, call booking, scheduled follow-ups, and human handovers',
-      'Implementing conversation classification pipelines to route and prioritize interactions based on intent',
-      'Contributing to an AI autopilot system for automated outbound outreach',
-      'Building internal tools and customer service infrastructure at scale',
+      'Production RAG system for AI-driven customer engagement across social media DMs',
+      'Conversational AI agents: lead qualification, call booking, follow-ups, human handovers',
+      'Conversation classification pipelines for intent-based routing',
+      'AI autopilot for automated outbound outreach',
+      'Internal tools and customer service infrastructure at scale',
     ],
   },
   {
     role: 'Senior Developer',
     company: 'WorkSource Alliance',
     period: '2023 — Dec 2025',
+    status: 'done' as const,
     points: [
-      'Led all technology decision-making across internal and external digital systems',
-      'Architected a full-scale applicant tracking system using Next.js, Supabase, and FastAPI; managed a 7-member team',
-      'Designed job board platform serving non-profits and institutions across PEI',
-      'Built scalable deployment infrastructure via Vercel',
+      'Led all technology decisions across internal and external digital systems',
+      'Architected ATS using Next.js, Supabase, FastAPI; managed 7-member team',
+      'Job board platform serving non-profits across PEI',
+      'Scalable deployment infrastructure via Vercel',
     ],
   },
   {
@@ -33,10 +36,11 @@ const jobs = [
     company: 'ADL',
     label: 'Amalgamated Dairies Limited',
     period: '2024 — 2025',
+    status: 'done' as const,
     points: [
-      'Conducted gap analysis of internal marketing and operations platforms',
-      'Developed a B2B food show booking solution using Next.js and PostgreSQL',
-      'Led migration of legacy WordPress infrastructure',
+      'Gap analysis of marketing and operations platforms',
+      'B2B food show booking solution (Next.js + PostgreSQL)',
+      'Legacy WordPress migration',
     ],
   },
 ];
@@ -51,31 +55,30 @@ export default function Experience() {
         <h2 className="text-xs font-mono gradient-text font-bold mb-10 tracking-wide">
           EXPERIENCE
         </h2>
-        <div className="space-y-12">
-          {jobs.map((job) => (
-            <div key={job.company} className="stagger grid sm:grid-cols-[200px_1fr] gap-4">
-              <div>
-                <Badge variant="outline" className="font-mono text-xs">{job.period}</Badge>
-              </div>
-              <div>
-                <h3 className="text-base font-semibold mb-1">
-                  {job.role}
-                  <span className="text-muted-foreground font-normal"> — {job.company}</span>
-                </h3>
-                {job.label && (
-                  <p className="text-xs text-muted-foreground mb-3">{job.label}</p>
-                )}
-                <ul className="space-y-2">
+        <Timeline positions="left">
+          {jobs.map((job, i) => (
+            <TimelineItem key={job.company} status={job.status === 'current' ? 'default' : 'done'}>
+              <TimelineHeading>
+                {job.role} <span className="text-muted-foreground font-normal">— {job.company}</span>
+              </TimelineHeading>
+              <TimelineDot status={job.status} />
+              <TimelineLine done={job.status === 'done'} />
+              <TimelineContent>
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge variant="outline" className="font-mono text-[11px]">{job.period}</Badge>
+                  {job.label && <span className="text-xs text-muted-foreground">{job.label}</span>}
+                </div>
+                <ul className="space-y-1.5">
                   {job.points.map((point, j) => (
-                    <li key={j} className="text-sm text-muted-foreground leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-gradient-to-r before:from-[#2563EB] before:to-[#7C3AED] before:rounded-full">
+                    <li key={j} className="text-sm text-muted-foreground leading-relaxed pl-3 relative before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:bg-gradient-to-r before:from-[#2563EB] before:to-[#7C3AED] before:rounded-full">
                       {point}
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
+              </TimelineContent>
+            </TimelineItem>
           ))}
-        </div>
+        </Timeline>
       </div>
     </section>
   );
