@@ -1,3 +1,6 @@
+'use client';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
 const projects = [
   {
     title: 'WoZ Platform for LLM Evaluation',
@@ -30,43 +33,47 @@ const projects = [
 ];
 
 export default function Projects() {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
     <section id="projects" className="py-12 sm:py-16 px-5 sm:px-6 max-w-4xl mx-auto border-t border-[#E4E4E7] dark:border-[#27272A]">
-      <h2 className="text-xs font-mono text-[#2563EB] dark:text-[#60A5FA] mb-10 tracking-wide">
-        PROJECTS
-      </h2>
-      <div className="grid sm:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <a
-            key={project.title}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block p-5 sm:p-6 rounded-lg border border-[#E4E4E7] dark:border-[#27272A] bg-white dark:bg-[#18181B] hover:border-[#2563EB] dark:hover:border-[#60A5FA] active:scale-[0.98] transition-all duration-200 cursor-pointer"
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono font-bold text-[#2563EB] dark:text-[#60A5FA] tracking-wider uppercase">
-                {project.tag}
-              </span>
-              <svg className="w-4 h-4 text-[#D4D4D8] dark:text-[#3F3F46] group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] transition-colors duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </div>
-            <h3 className="text-base font-semibold text-[#18181B] dark:text-white mb-2 font-mono">
-              {project.title}
-            </h3>
-            <p className="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-4">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <span key={t} className="text-[11px] px-2 py-0.5 rounded bg-[#F4F4F5] dark:bg-[#27272A] text-[#52525B] dark:text-[#71717A] font-mono">
-                  {t}
+      <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
+        <h2 className="text-xs font-mono gradient-text font-bold mb-10 tracking-wide">
+          PROJECTS
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-6">
+          {projects.map((project, i) => (
+            <a
+              key={project.title}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stagger group block p-5 sm:p-6 rounded-lg border border-[#E4E4E7] dark:border-[#27272A] bg-white dark:bg-[#18181B] card-glow hover:border-[#2563EB]/40 dark:hover:border-[#60A5FA]/40 cursor-pointer"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-mono font-bold gradient-text tracking-wider uppercase">
+                  {project.tag}
                 </span>
-              ))}
-            </div>
-          </a>
-        ))}
+                <svg className="w-4 h-4 text-[#D4D4D8] dark:text-[#3F3F46] group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </div>
+              <h3 className="text-base font-semibold text-[#18181B] dark:text-white mb-2 font-mono">
+                {project.title}
+              </h3>
+              <p className="text-sm text-[#64748B] dark:text-[#94A3B8] leading-relaxed mb-4">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span key={t} className="text-[11px] px-2 py-0.5 rounded bg-[#F4F4F5] dark:bg-[#27272A] text-[#52525B] dark:text-[#71717A] font-mono">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
