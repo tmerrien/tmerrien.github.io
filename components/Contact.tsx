@@ -1,19 +1,15 @@
 'use client';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { FadeIn } from './FadeIn';
 import { buttonVariants } from './ui/button';
 import { Separator } from './ui/separator';
 import { cn } from '@/lib/utils';
 
 export default function Contact() {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
     <section id="contact" className="py-8 sm:py-12 px-5 sm:px-6 max-w-4xl mx-auto">
       <Separator className="mb-8" />
-      <div ref={ref} className={`reveal ${isVisible ? 'visible' : ''}`}>
-        <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">
-          CONTACT
-        </h2>
+      <FadeIn>
+        <h2 className="text-xs font-mono gradient-text font-bold mb-6 tracking-wide">CONTACT</h2>
         <p className="text-base text-muted-foreground mb-8 max-w-lg">
           Open to opportunities in AI/agent engineering, conversational AI, and LLM infrastructure.
           Based in Ottawa, Canada. Available remote.
@@ -32,7 +28,7 @@ export default function Contact() {
             LinkedIn
           </a>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

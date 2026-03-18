@@ -15,36 +15,7 @@ h1, h2, h3, h4 {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Scroll reveal animation — only hide when JS has loaded */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-.js-loaded .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.js-loaded .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered children */
-.reveal.visible > .stagger:nth-child(1) { transition-delay: 0ms; }
-.reveal.visible > .stagger:nth-child(2) { transition-delay: 80ms; }
-.reveal.visible > .stagger:nth-child(3) { transition-delay: 160ms; }
-.reveal.visible > .stagger:nth-child(4) { transition-delay: 240ms; }
-
-.js-loaded .stagger {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-.js-loaded .reveal.visible > .stagger {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Animations handled by framer-motion */
 
 /* Gradient text utility */
 .gradient-text {
@@ -54,19 +25,7 @@ h1, h2, h3, h4 {
   background-clip: text;
 }
 
-/* Accent line animation */
-.accent-line {
-  width: 48px;
-  height: 2px;
-  background: linear-gradient(90deg, #2563EB, #7C3AED);
-}
-.js-loaded .accent-line {
-  width: 0;
-  transition: width 0.8s ease-out;
-}
-.js-loaded .reveal.visible .accent-line {
-  width: 48px;
-}
+/* Accent line handled by framer-motion in Hero */
 
 /* Card hover glow */
 .card-glow {
@@ -85,14 +44,7 @@ a:focus-visible, button:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .stagger { opacity: 1; transform: none; transition: none; }
-  .accent-line { width: 48px; transition: none; }
   .card-glow:hover { transform: none; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
 }
 
 :root {
