@@ -1,108 +1,103 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Button } from './ui/button';
-import { Dock, DockIcon } from './ui/dock';
+import { ReactNode } from 'react';
+import Link from 'next/link';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+const navLinks = [
+  { label: 'Research', href: '#research', active: true },
+  { label: 'Systems', href: '#experience' },
+  { label: 'Stack', href: '#stack' },
+  { label: 'Archive', href: '#projects' },
+];
 
-export default function Layout({ children }: LayoutProps) {
-  const [isDark, setIsDark] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+const sideIcons = [
+  { icon: 'dashboard', href: '#top', active: true },
+  { icon: 'work', href: '#experience' },
+  { icon: 'folder_special', href: '#projects' },
+  { icon: 'school', href: '#education' },
+];
 
-  useEffect(() => {
-    // Mark that JS has loaded so animations can start
-    document.documentElement.classList.add('js-loaded');
-
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDarkMode = (saved || (prefersDark ? 'dark' : 'light')) === 'dark';
-    setIsDark(isDarkMode);
-    if (isDarkMode) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-    if (newTheme) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  };
-
-  const sections = [
-    { id: 'about', icon: '👤' },
-    { id: 'experience', icon: '💼' },
-    { id: 'projects', icon: '📁' },
-    { id: 'education', icon: '🎓' },
-    { id: 'contact', icon: '✉️' },
-  ];
-
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
-      {/* Mobile top nav */}
-      <nav className="md:hidden fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50">
-        <div className="px-6 flex justify-between items-center h-14">
-          <a href="#home" className="font-mono font-bold text-sm tracking-tight">
-            tanguy.merrien
-          </a>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="w-10 h-10 cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              ) : (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-              )}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="w-10 h-10 cursor-pointer" aria-label="Toggle theme">
-              {isDark ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-              ) : (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-              )}
-            </Button>
-          </div>
-        </div>
-        {menuOpen && (
-          <div className="border-t border-border px-6 py-3 flex flex-wrap gap-4 bg-background">
-            {sections.map((s) => (
-              <a key={s.id} href={`#${s.id}`} onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer capitalize">
-                {s.id}
+    <div className="min-h-screen">
+      {/* Top Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-white/5 backdrop-blur-[40px] border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)]">
+        <div className="flex justify-between items-center px-8 h-12 w-full max-w-[1440px] mx-auto">
+          <span className="font-['Space_Grotesk'] font-bold text-lg tracking-tighter text-[var(--on-surface)]">
+            Tanguy Merrien
+          </span>
+          <div className="hidden md:flex gap-8 items-center">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className={`font-['Space_Grotesk'] tracking-tight text-sm transition-colors ${
+                  link.active
+                    ? 'text-[var(--on-surface)] font-bold border-b border-[var(--on-surface)] pb-1'
+                    : 'text-[var(--outline)] hover:text-[var(--on-surface)]'
+                }`}
+              >
+                {link.label}
               </a>
             ))}
           </div>
-        )}
+          <span className="font-['Space_Grotesk'] tracking-tight text-sm text-[var(--on-surface-variant)] bg-white/10 px-3 py-1 rounded-full border border-white/20">
+            Available: Remote/Ottawa
+          </span>
+        </div>
       </nav>
 
-      {/* Desktop floating dock */}
-      <div className="hidden md:block fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <Dock magnification={50} distance={120}>
-          <DockIcon className="bg-background/80 border border-border backdrop-blur-sm">
-            <a href="#home" className="text-xs font-mono font-bold" title="Home">TM</a>
-          </DockIcon>
-          {sections.map((s) => (
-            <DockIcon key={s.id} className="bg-background/80 border border-border backdrop-blur-sm">
-              <a href={`#${s.id}`} title={s.id} className="text-base">{s.icon}</a>
-            </DockIcon>
+      {/* Side Navigation */}
+      <aside className="fixed left-0 top-12 h-[calc(100vh-48px)] w-16 z-40 bg-white/5 backdrop-blur-[40px] border-r border-white/10 hidden md:flex flex-col items-center py-8 gap-8">
+        <div className="mb-4">
+          <span className="font-['Space_Grotesk'] font-black text-xl text-[var(--on-surface)]">TM</span>
+        </div>
+        <div className="flex flex-col gap-6">
+          {sideIcons.map((item) => (
+            <a
+              key={item.icon}
+              href={item.href}
+              className={`w-10 h-10 flex items-center justify-center rounded-xl transition-transform duration-200 hover:scale-110 ${
+                item.active
+                  ? 'bg-[var(--inverse-surface)] text-white'
+                  : 'text-[var(--outline-variant)] hover:text-[var(--on-surface)]'
+              }`}
+            >
+              <span className="material-symbols-outlined">{item.icon}</span>
+            </a>
           ))}
-          <DockIcon className="bg-background/80 border border-border backdrop-blur-sm" >
-            <button onClick={toggleTheme} className="text-base cursor-pointer" aria-label="Toggle theme">
-              {isDark ? '☀️' : '🌙'}
-            </button>
-          </DockIcon>
-        </Dock>
-      </div>
+        </div>
+      </aside>
 
-      <main className="pt-14 md:pt-6 pb-28 md:pb-32">{children}</main>
+      {/* Main Content */}
+      <main className="pt-12">{children}</main>
+
+      {/* Footer */}
+      <footer className="fixed bottom-0 w-full py-4 border-t border-white/5 bg-transparent z-30">
+        <div className="flex justify-between items-center px-8 w-full max-w-[1440px] mx-auto">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--outline-variant)]">
+            &copy; {new Date().getFullYear()} Tanguy Merrien
+          </span>
+          <div className="flex gap-6">
+            <a
+              href="https://github.com/tmerrien"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] uppercase tracking-widest text-[var(--outline-variant)] hover:text-[var(--on-surface)] transition-colors"
+            >
+              Github
+            </a>
+            <a
+              href="https://www.linkedin.com/in/tanguy-merrien-26aa96146/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] uppercase tracking-widest text-[var(--outline-variant)] hover:text-[var(--on-surface)] transition-colors"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
