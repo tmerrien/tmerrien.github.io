@@ -65,15 +65,11 @@ export default function Home() {
           content="Portfolio of Tanguy Merrien — AI & Software Engineer specializing in conversational AI, RAG architectures, and agent-driven systems."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
-      <div id="top" className="px-6 md:pl-24 md:pr-8 pt-6 pb-12 max-w-[1440px] mx-auto w-full h-[calc(100vh-48px)] overflow-y-auto no-scrollbar">
+      <div id="top" className="px-6 md:pl-24 md:pr-8 pt-4 pb-10 max-w-[1440px] mx-auto w-full h-[calc(100vh-48px)] overflow-y-auto md:overflow-hidden no-scrollbar">
         {/* Bento Grid */}
-        <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-[repeat(6,1fr)] gap-4 md:h-full">
+        <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-[repeat(6,minmax(0,1fr))] gap-3 md:h-[calc(100vh-100px)]">
 
           {/* Module 1: Profile */}
           <motion.div
