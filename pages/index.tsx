@@ -13,15 +13,15 @@ const fadeUp: Variants = {
 };
 
 const jobs = [
-  { num: '01', company: 'Revio', desc: 'AI Sales CRM \u2022 Software Engineer' },
-  { num: '02', company: 'WorkSource Alliance', desc: 'Senior Developer \u2022 Full Stack' },
-  { num: '03', company: 'ADL', desc: 'Solution Consultant \u2022 Systems' },
+  { num: '01', company: 'Revio', role: 'Developer', desc: 'AI Sales CRM', period: 'Dec 2025 — Present' },
+  { num: '02', company: 'WorkSource Alliance', role: 'Senior Developer', desc: 'Full Stack', period: '2023 — Dec 2025' },
+  { num: '03', company: 'ADL', role: 'Solution Consultant', desc: 'Amalgamated Dairies Limited', period: '2024 — 2025' },
 ];
 
 const skills = {
-  'AI / LLM': ['RAG', 'Agent Design', 'Prompt Eng.', 'LLM UX'],
-  Engineering: ['Next.js', 'TypeScript', 'Python', 'FastAPI'],
-  Infra: ['Vercel', 'Supabase', 'Docker', 'Azure'],
+  'AI/LLM': ['RAG Pipelines', 'Agent Design', 'Prompt Engineering', 'Context Engineering', 'LLM UX'],
+  Stack: ['TypeScript', 'React', 'Next.js', 'Python', 'FastAPI', 'PostgreSQL'],
+  Infra: ['Coolify', 'Supabase', 'Docker', 'Azure'],
 };
 
 const projects = [
@@ -71,9 +71,9 @@ export default function Home() {
         />
       </Head>
 
-      <div id="top" className="px-6 md:pl-24 md:pr-8 pt-8 pb-16 max-w-[1440px] mx-auto w-full h-[calc(100vh-48px)] overflow-y-auto no-scrollbar">
+      <div id="top" className="px-6 md:pl-24 md:pr-8 pt-6 pb-12 max-w-[1440px] mx-auto w-full h-[calc(100vh-48px)] overflow-y-auto no-scrollbar">
         {/* Bento Grid */}
-        <div className="grid grid-cols-12 auto-rows-min md:grid-rows-6 gap-5 md:h-full">
+        <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-[repeat(6,1fr)] gap-4 md:h-full">
 
           {/* Module 1: Profile */}
           <motion.div
@@ -154,8 +154,8 @@ export default function Home() {
             id="experience"
             className="col-span-12 md:col-span-3 md:row-span-3 glass-card rounded-[2rem] p-8"
           >
-            <span className="label block mb-6">Trajectory</span>
-            <div className="space-y-8">
+            <span className="label block mb-6">Experience</span>
+            <div className="space-y-6">
               {jobs.map((job) => (
                 <div key={job.num} className="flex gap-4">
                   <div className="text-[var(--primary)] font-['Space_Grotesk'] font-bold text-lg">
@@ -163,9 +163,10 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-['Space_Grotesk'] font-bold text-[var(--on-surface)] tracking-tight">
-                      {job.company}
+                      {job.role} <span className="font-normal text-[var(--secondary)]">&mdash; {job.company}</span>
                     </h4>
-                    <p className="text-xs text-[var(--secondary)] font-medium">{job.desc}</p>
+                    <p className="text-[11px] text-[var(--outline)] mt-0.5">{job.period}</p>
+                    <p className="text-xs text-[var(--secondary)] font-medium mt-0.5">{job.desc}</p>
                   </div>
                 </div>
               ))}
@@ -178,10 +179,10 @@ export default function Home() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            id="stack"
+            id="about"
             className="col-span-12 md:col-span-4 md:row-span-3 glass-card rounded-[2rem] p-8"
           >
-            <span className="label block mb-6">Core Stack</span>
+            <span className="label block mb-6">About</span>
             <div className="grid grid-cols-1 gap-6">
               {Object.entries(skills).map(([category, items]) => (
                 <div key={category}>
@@ -235,22 +236,22 @@ export default function Home() {
             className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-[2rem] p-8"
           >
             <span className="label block mb-4">Projects</span>
-            <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+            <div className="flex gap-3 overflow-x-auto no-scrollbar pb-2">
               {projects.map((project) => (
                 <a
                   key={project.title}
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-56 glass-inner-border bg-white/30 rounded-2xl p-5 hover:bg-white/50 transition-colors group"
+                  className="flex-shrink-0 w-44 glass-inner-border bg-white/30 rounded-2xl p-4 hover:bg-white/50 transition-colors group"
                 >
                   <span className="font-['Space_Grotesk'] text-[9px] uppercase tracking-widest text-[var(--primary)] font-bold">
                     {project.tag}
                   </span>
-                  <h4 className="font-['Space_Grotesk'] font-bold text-sm text-[var(--on-surface)] mt-2 leading-snug">
+                  <h4 className="font-['Space_Grotesk'] font-bold text-xs text-[var(--on-surface)] mt-1.5 leading-snug">
                     {project.title}
                   </h4>
-                  <p className="text-[11px] text-[var(--secondary)] mt-2 leading-relaxed line-clamp-2">
+                  <p className="text-[10px] text-[var(--secondary)] mt-1.5 leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                   <div className="flex items-center gap-1 mt-3">
