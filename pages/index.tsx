@@ -1,25 +1,33 @@
 'use client';
 
 import Head from 'next/head';
-import { AnimatedGroup } from '@/components/ui/animated-group';
+import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/neon-button';
 
-const transitionVariants = {
-  item: {
-    hidden: {
-      opacity: 0,
-      filter: 'blur(12px)',
-      y: 12,
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.15,
     },
-    visible: {
-      opacity: 1,
-      filter: 'blur(0px)',
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        bounce: 0.3,
-        duration: 1.5,
-      },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: 'blur(12px)',
+    y: 12,
+  },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px)',
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      bounce: 0.3,
+      duration: 1.5,
     },
   },
 };
@@ -53,23 +61,17 @@ export default function Home() {
       </Head>
 
       <div id="top" className="relative z-10 px-3 pt-14 md:pt-4 pb-10 md:pb-4 w-full h-auto md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
-        <AnimatedGroup
-          variants={{
-            container: {
-              visible: {
-                transition: {
-                  staggerChildren: 0.05,
-                  delayChildren: 0.15,
-                },
-              },
-            },
-            ...transitionVariants,
-          }}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
           className="grid grid-cols-12 auto-rows-auto md:grid-rows-5 gap-2.5 md:h-[calc(100vh-32px)]"
         >
 
           {/* Profile — 4col, 2row */}
-          <div className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-7 flex flex-col justify-between relative overflow-hidden min-h-0">
+          <motion.div variants={cardVariants}
+            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-7 flex flex-col justify-between relative overflow-hidden min-h-0"
+          >
             <div className="absolute -right-12 -top-12 w-40 h-40 bg-[var(--primary)]/5 rounded-full blur-3xl" />
             <div className="relative">
               <span className="label block mb-1">Identity</span>
@@ -85,10 +87,12 @@ export default function Home() {
                 <p className="text-sm text-[var(--secondary)]">Architecting Intelligence</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Featured Research — 5col, 3row */}
-          <div id="research" className="col-span-12 md:col-span-5 md:row-span-3 glass-card rounded-[1.5rem] relative overflow-hidden min-h-0 group">
+          <motion.div variants={cardVariants} id="research"
+            className="col-span-12 md:col-span-5 md:row-span-3 glass-card rounded-[1.5rem] relative overflow-hidden min-h-0 group"
+          >
             <img
               src="/images/research-bg.jpg"
               alt=""
@@ -113,10 +117,12 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Experience — 3col, 2row */}
-          <div id="experience" className="col-span-12 md:col-span-3 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0">
+          <motion.div variants={cardVariants} id="experience"
+            className="col-span-12 md:col-span-3 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0"
+          >
             <span className="label block mb-4">Experience</span>
             <div className="space-y-5">
               {jobs.map((job) => (
@@ -129,10 +135,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* About / Stack — 4col, 2row */}
-          <div id="about" className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0">
+          <motion.div variants={cardVariants} id="about"
+            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0"
+          >
             <span className="label block mb-4">About</span>
             <div className="space-y-4">
               {Object.entries(skills).map(([category, items]) => (
@@ -144,10 +152,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Education — 3col, 3row */}
-          <div id="education" className="col-span-12 md:col-span-3 md:row-span-3 glass-card rounded-[1.5rem] p-7 flex flex-col justify-between overflow-hidden min-h-0">
+          <motion.div variants={cardVariants} id="education"
+            className="col-span-12 md:col-span-3 md:row-span-3 glass-card rounded-[1.5rem] p-7 flex flex-col justify-between overflow-hidden min-h-0"
+          >
             <div>
               <span className="label block mb-3">Education</span>
               <h3 className="font-['Space_Grotesk'] font-bold text-xl leading-tight">University of Prince Edward Island</h3>
@@ -167,10 +177,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Projects — 5col, 2row */}
-          <div id="projects" className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0">
+          <motion.div variants={cardVariants} id="projects"
+            className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-[1.5rem] p-7 overflow-hidden min-h-0"
+          >
             <span className="label block mb-3">Projects</span>
             <div className="flex gap-3 overflow-x-auto no-scrollbar">
               {projects.map((project) => (
@@ -187,10 +199,12 @@ export default function Home() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact — 4col, 1row */}
-          <div className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-[1.5rem] px-7 py-4 flex items-center justify-between group hover:bg-white/40 transition-colors overflow-hidden min-h-0">
+          <motion.div variants={cardVariants}
+            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-[1.5rem] px-7 py-4 flex items-center justify-between group hover:bg-white/40 transition-colors overflow-hidden min-h-0"
+          >
             <a href="mailto:tmerrien@outlook.com" className="flex items-center gap-4 w-full">
               <div className="w-11 h-11 rounded-xl bg-[var(--primary)] flex items-center justify-center text-[var(--on-primary)] flex-shrink-0">
                 <span className="material-symbols-outlined text-xl">mail</span>
@@ -208,9 +222,9 @@ export default function Home() {
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
             </div>
-          </div>
+          </motion.div>
 
-        </AnimatedGroup>
+        </motion.div>
       </div>
     </>
   );
