@@ -5,11 +5,12 @@ import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/ui/neon-button';
 
 const containerVariants: Variants = {
-  hidden: {},
+  hidden: { opacity: 1 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.15,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
     },
   },
 };
@@ -17,17 +18,17 @@ const containerVariants: Variants = {
 const cardVariants: Variants = {
   hidden: {
     opacity: 0,
-    filter: 'blur(12px)',
-    y: 12,
+    y: 24,
+    scale: 0.96,
   },
   visible: {
     opacity: 1,
-    filter: 'blur(0px)',
     y: 0,
+    scale: 1,
     transition: {
       type: 'spring' as const,
       bounce: 0.3,
-      duration: 1.5,
+      duration: 1.2,
     },
   },
 };
