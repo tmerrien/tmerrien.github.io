@@ -1,30 +1,99 @@
 'use client';
 
+import { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
+import { GlassModal } from '@/components/ui/glass-modal';
 
 const container: Variants = {
   hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
 };
 
 const card: Variants = {
   hidden: { opacity: 0, y: 20, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: 'spring' as const, bounce: 0.25, duration: 1.2 },
-  },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, bounce: 0.25, duration: 1.2 } },
 };
+
+const stagger: Variants = {
+  hidden: { opacity: 1 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+
+const slideIn: Variants = {
+  hidden: { opacity: 0, x: -16 },
+  visible: { opacity: 1, x: 0, transition: { type: 'spring' as const, bounce: 0.2, duration: 0.8 } },
+};
+
+const scaleIn: Variants = {
+  hidden: { opacity: 0, y: 20, scale: 0.96 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, bounce: 0.2, duration: 1 } },
+};
+
+const jobs = [
+  {
+    num: '01', role: 'Developer', company: 'Revio', label: 'AI Sales CRM', period: 'Dec 2025 — Present',
+    points: [
+      'Production RAG system for AI-driven customer engagement across social media DMs',
+      'Conversational AI agents: lead qualification, call booking, follow-ups, human handovers',
+      'Conversation classification pipelines for intent-based routing',
+      'AI autopilot for automated outbound outreach',
+      'Internal tools and customer service infrastructure at scale',
+    ],
+  },
+  {
+    num: '02', role: 'Senior Developer', company: 'WorkSource Alliance', period: '2023 — Dec 2025',
+    points: [
+      'Led all technology decisions across internal and external digital systems',
+      'Architected ATS using Next.js, Supabase, FastAPI; managed 7-member team',
+      'Job board platform serving non-profits across PEI',
+      'Scalable deployment infrastructure via Vercel',
+    ],
+  },
+  {
+    num: '03', role: 'Solution Consultant', company: 'ADL', label: 'Amalgamated Dairies Limited', period: '2024 — 2025',
+    points: [
+      'Gap analysis of marketing and operations platforms',
+      'B2B food show booking solution (Next.js + PostgreSQL)',
+      'Legacy WordPress migration',
+    ],
+  },
+];
+
+const projects = [
+  {
+    title: 'WoZ Platform for LLM Evaluation', tag: 'Research',
+    description: 'Honours thesis research platform enabling controlled evaluation of LLM conversational quality using Wizard-of-Oz methodology. Supports three experimental conditions to study how tone, empathy, refusal strategies, and formatting affect user trust.',
+    tech: ['Next.js', 'Supabase', 'Ollama', 'AI SDK'],
+    url: 'https://github.com/tmerrien/oz-upei',
+  },
+  {
+    title: 'Notto', tag: 'Open Source',
+    description: 'Production-ready React component library bridging basic component libraries and full starter kits. Built with a focus on developer experience and real-world usage patterns.',
+    tech: ['Next.js 15', 'TypeScript', 'Tailwind v4', 'shadcn/ui'],
+    url: 'https://github.com/tmerrien/notto',
+  },
+  {
+    title: 'WorkSource Alliance ATS', tag: 'Enterprise',
+    description: 'Full-scale applicant tracking system serving non-profits and institutions across PEI. Led architecture decisions and managed a 7-member development team.',
+    tech: ['Next.js', 'Supabase', 'FastAPI', 'TypeScript'],
+    url: 'https://beta.worksourcealliance.ca',
+  },
+  {
+    title: 'Kirkwood Gaps Simulation', tag: 'Physics',
+    description: 'Physics simulation of orbital resonance gaps in the asteroid belt using numerical integration. Visualizes how Jupiter\'s gravitational influence creates gaps in the asteroid distribution.',
+    tech: ['Python', 'NumPy', 'Matplotlib'],
+    url: 'https://github.com/tmerrien/kirkwood_gaps',
+  },
+];
 
 const skills = ['RAG Pipelines', 'Agent Design', 'TypeScript', 'React', 'Next.js', 'Python', 'FastAPI', 'Docker'];
 
+type ModalType = null | 'experience' | 'projects';
+
 export default function Home() {
+  const [modal, setModal] = useState<ModalType>(null);
+
   return (
     <>
       <Head>
@@ -41,7 +110,7 @@ export default function Home() {
           className="grid grid-cols-12 auto-rows-auto md:grid-rows-3 gap-3 md:h-[calc(100vh-40px)] max-w-[1600px] mx-auto"
         >
 
-          {/* Hero / Profile — big statement */}
+          {/* Hero / Profile */}
           <motion.div variants={card}
             className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden min-h-0"
           >
@@ -66,13 +135,11 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Featured Research — hero card */}
+          {/* Featured Research */}
           <motion.div variants={card}
             className="col-span-12 md:col-span-7 md:row-span-2 glass-card accent-glow rounded-3xl relative overflow-hidden min-h-0 group cursor-pointer"
           >
-            <img
-              src="/images/research-bg.jpg"
-              alt=""
+            <img src="/images/research-bg.jpg" alt=""
               className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
             />
             <a href="https://github.com/tmerrien/oz-upei" target="_blank" rel="noopener noreferrer"
@@ -99,65 +166,47 @@ export default function Home() {
             </a>
           </motion.div>
 
-          {/* Experience teaser */}
+          {/* Experience teaser — opens modal */}
           <motion.div variants={card}
+            onClick={() => setModal('experience')}
             className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 overflow-hidden min-h-0 cursor-pointer group"
           >
-            <Link href="/experience" className="h-full flex flex-col justify-between">
-              <div>
-                <span className="label block mb-3">Experience</span>
-                <div className="space-y-3">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-[var(--primary-accent)] font-['Space_Grotesk'] font-bold text-lg">01</span>
-                    <div>
-                      <span className="font-['Space_Grotesk'] font-bold text-lg">Revio</span>
-                      <span className="text-sm text-[var(--secondary)] ml-2">Developer &middot; AI Sales CRM</span>
-                    </div>
-                  </div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-[var(--primary-accent)] font-['Space_Grotesk'] font-bold text-lg">02</span>
-                    <div>
-                      <span className="font-['Space_Grotesk'] font-bold text-lg">WorkSource Alliance</span>
-                      <span className="text-sm text-[var(--secondary)] ml-2">Senior Developer</span>
-                    </div>
-                  </div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-[var(--primary-accent)] font-['Space_Grotesk'] font-bold text-lg">03</span>
-                    <div>
-                      <span className="font-['Space_Grotesk'] font-bold text-lg">ADL</span>
-                      <span className="text-sm text-[var(--secondary)] ml-2">Solution Consultant</span>
-                    </div>
+            <span className="label block mb-3">Experience</span>
+            <div className="space-y-3">
+              {jobs.map((job) => (
+                <div key={job.num} className="flex items-baseline gap-3">
+                  <span className="text-[var(--primary-accent)] font-['Space_Grotesk'] font-bold text-lg">{job.num}</span>
+                  <div>
+                    <span className="font-['Space_Grotesk'] font-bold text-lg">{job.company}</span>
+                    <span className="text-sm text-[var(--secondary)] ml-2">{job.role}</span>
                   </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-2 mt-4 text-sm text-[var(--primary-accent)] font-['Space_Grotesk'] font-medium group-hover:gap-3 transition-all">
-                View full experience <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </div>
-            </Link>
+              ))}
+            </div>
+            <div className="flex items-center gap-2 mt-4 text-sm text-[var(--primary-accent)] font-['Space_Grotesk'] font-medium group-hover:gap-3 transition-all">
+              View details <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
           </motion.div>
 
-          {/* Projects teaser */}
+          {/* Projects teaser — opens modal */}
           <motion.div variants={card}
+            onClick={() => setModal('projects')}
             className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 overflow-hidden min-h-0 cursor-pointer group"
           >
-            <Link href="/projects" className="h-full flex flex-col justify-between">
-              <div>
-                <span className="label block mb-3">Projects</span>
-                <div className="grid grid-cols-2 gap-2">
-                  {['WoZ Platform', 'Notto', 'WorkSource ATS', 'Kirkwood Gaps'].map((name) => (
-                    <div key={name} className="glass-inner rounded-xl p-3">
-                      <p className="font-['Space_Grotesk'] font-bold text-sm leading-tight">{name}</p>
-                    </div>
-                  ))}
+            <span className="label block mb-3">Projects</span>
+            <div className="grid grid-cols-2 gap-2">
+              {projects.map((p) => (
+                <div key={p.title} className="glass-inner rounded-xl p-3">
+                  <p className="font-['Space_Grotesk'] font-bold text-sm leading-tight">{p.title}</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-2 mt-4 text-sm text-[var(--primary-accent)] font-['Space_Grotesk'] font-medium group-hover:gap-3 transition-all">
-                View all projects <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </div>
-            </Link>
+              ))}
+            </div>
+            <div className="flex items-center gap-2 mt-4 text-sm text-[var(--primary-accent)] font-['Space_Grotesk'] font-medium group-hover:gap-3 transition-all">
+              View all projects <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
           </motion.div>
 
-          {/* Contact + Skills + Socials */}
+          {/* Stack + Contact */}
           <motion.div variants={card}
             className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 flex flex-col justify-between overflow-hidden min-h-0"
           >
@@ -187,6 +236,79 @@ export default function Home() {
 
         </motion.div>
       </div>
+
+      {/* Experience Modal */}
+      <GlassModal open={modal === 'experience'} onClose={() => setModal(null)}>
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="font-['Space_Grotesk'] text-4xl font-bold tracking-tighter mb-10"
+        >
+          Experience
+        </motion.h2>
+        <motion.div variants={stagger} initial="hidden" animate="visible" className="space-y-8">
+          {jobs.map((job) => (
+            <motion.div key={job.num} variants={slideIn} className="glass-inner rounded-2xl p-7">
+              <div className="flex items-start gap-4 mb-4">
+                <span className="text-[var(--primary-accent)] font-['Space_Grotesk'] font-bold text-2xl">{job.num}</span>
+                <div>
+                  <h3 className="font-['Space_Grotesk'] font-bold text-2xl tracking-tight">
+                    {job.role} <span className="text-[var(--secondary)] font-normal">&mdash; {job.company}</span>
+                  </h3>
+                  <div className="flex items-center gap-3 mt-1">
+                    <span className="text-sm text-[var(--outline)]">{job.period}</span>
+                    {job.label && <span className="text-sm text-[var(--secondary)]">{job.label}</span>}
+                  </div>
+                </div>
+              </div>
+              <ul className="space-y-2 ml-10">
+                {job.points.map((point, i) => (
+                  <li key={i} className="text-base text-[var(--on-surface-variant)] leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:bg-[var(--primary-accent)] before:rounded-full">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+      </GlassModal>
+
+      {/* Projects Modal */}
+      <GlassModal open={modal === 'projects'} onClose={() => setModal(null)}>
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="font-['Space_Grotesk'] text-4xl font-bold tracking-tighter mb-10"
+        >
+          Projects
+        </motion.h2>
+        <motion.div variants={stagger} initial="hidden" animate="visible" className="grid md:grid-cols-2 gap-4">
+          {projects.map((project) => (
+            <motion.a
+              key={project.title}
+              variants={scaleIn}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-inner rounded-2xl p-7 flex flex-col justify-between group cursor-pointer hover:bg-white/50 transition-colors"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest text-[var(--primary-accent)] font-bold">{project.tag}</span>
+                  <span className="material-symbols-outlined text-lg text-[var(--outline-variant)] group-hover:text-[var(--primary-accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">arrow_outward</span>
+                </div>
+                <h3 className="font-['Space_Grotesk'] font-bold text-xl tracking-tight mb-3">{project.title}</h3>
+                <p className="text-base text-[var(--on-surface-variant)] leading-relaxed">{project.description}</p>
+              </div>
+              <div className="flex flex-wrap gap-2 mt-5">
+                {project.tech.map((t) => (<span key={t} className="chip">{t}</span>))}
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
+      </GlassModal>
     </>
   );
 }
