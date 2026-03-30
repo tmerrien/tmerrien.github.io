@@ -40,34 +40,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div id="top" className="px-3 md:px-3 pt-14 md:pt-3 pb-10 md:pb-3 w-full h-auto md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
-        {/*
-          5-row grid:
-          Row 1: Profile(4,2) | Research(5,3) | Experience(3,2)
-          Row 2: Profile cont  | Research cont | Experience cont
-          Row 3: About(4,2)   | Research cont | Education(3,3)
-          Row 4: About cont   | Projects(5,2) | Education cont
-          Row 5: Contact(4,1) | Projects cont | Education cont
-        */}
+      <div id="top" className="px-3 pt-14 md:pt-3 pb-10 md:pb-3 w-full h-auto md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
         <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-5 gap-2.5 md:h-screen md:max-h-screen">
 
           {/* Profile — 4col, 2row */}
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible"
-            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-5 flex flex-col justify-between relative overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-6 flex flex-col justify-between relative overflow-hidden min-h-0"
           >
             <div className="absolute -right-12 -top-12 w-40 h-40 bg-[var(--primary)]/5 rounded-full blur-3xl" />
             <div className="relative">
               <span className="label block mb-1">Identity</span>
-              <h1 className="font-['Space_Grotesk'] text-2xl font-bold tracking-tighter">Tanguy Merrien</h1>
-              <p className="text-[var(--secondary)] text-sm mt-0.5">AI &amp; Software Engineer</p>
+              <h1 className="font-['Space_Grotesk'] text-3xl font-bold tracking-tighter">Tanguy Merrien</h1>
+              <p className="text-[var(--secondary)] text-base mt-1">AI &amp; Software Engineer</p>
             </div>
             <div className="relative mt-auto pt-3 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full glass-inner-border bg-[var(--surface-container-low)] flex items-center justify-center">
-                <span className="material-symbols-outlined text-[var(--primary)] text-lg">psychology</span>
+              <div className="w-10 h-10 rounded-full glass-inner-border overflow-hidden">
+                <img src="/images/avatar.jpg" alt="" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="text-[10px] font-['Space_Grotesk'] font-bold text-[var(--on-surface-variant)] uppercase tracking-wider">Status</p>
-                <p className="text-[11px] text-[var(--secondary)]">Architecting Intelligence</p>
+                <p className="text-[11px] font-['Space_Grotesk'] font-bold text-[var(--on-surface-variant)] uppercase tracking-wider">Status</p>
+                <p className="text-xs text-[var(--secondary)]">Architecting Intelligence</p>
               </div>
             </div>
           </motion.div>
@@ -76,38 +68,42 @@ export default function Home() {
           <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" id="research"
             className="col-span-12 md:col-span-5 md:row-span-3 glass-card rounded-[1.5rem] relative overflow-hidden min-h-0 group"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--surface-container-low)] to-transparent opacity-60" />
-            <div className="relative p-5 md:p-6 h-full flex flex-col justify-between">
+            <img
+              src="/images/research-bg.jpg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="relative p-6 h-full flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
-                  <span className="font-['Space_Grotesk'] text-[10px] uppercase tracking-widest text-[var(--primary)] font-bold">Featured Research</span>
+                  <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
+                  <span className="font-['Space_Grotesk'] text-[11px] uppercase tracking-widest text-[var(--primary)] font-bold">Featured Research</span>
                 </div>
-                <h2 className="font-['Space_Grotesk'] text-2xl md:text-3xl font-extrabold tracking-tighter leading-tight">WoZ Platform for LLM Evaluation</h2>
-                <p className="text-[var(--secondary)] mt-3 text-sm leading-relaxed max-w-sm">
+                <h2 className="font-['Space_Grotesk'] text-3xl font-extrabold tracking-tighter leading-tight">WoZ Platform for LLM Evaluation</h2>
+                <p className="text-[var(--secondary)] mt-4 text-sm leading-relaxed max-w-sm">
                   Honours Thesis: Developing high-fidelity Wizard-of-Oz frameworks to stress-test large language model alignment in collaborative environments.
                 </p>
               </div>
               <a href="https://github.com/tmerrien/oz-upei" target="_blank" rel="noopener noreferrer"
-                className="mt-4 bg-[var(--primary)] text-[var(--on-primary)] px-6 py-2.5 rounded-full font-['Space_Grotesk'] text-xs font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all w-fit"
+                className="mt-4 bg-[var(--primary)] text-[var(--on-primary)] px-6 py-3 rounded-full font-['Space_Grotesk'] text-sm font-bold inline-flex items-center gap-2 hover:opacity-90 transition-all w-fit"
               >
-                View Thesis <span className="material-symbols-outlined text-xs">arrow_outward</span>
+                View Thesis <span className="material-symbols-outlined text-sm">arrow_outward</span>
               </a>
             </div>
           </motion.div>
 
           {/* Experience — 3col, 2row */}
           <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" id="experience"
-            className="col-span-12 md:col-span-3 md:row-span-2 glass-card rounded-[1.5rem] p-5 overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-3 md:row-span-2 glass-card rounded-[1.5rem] p-6 overflow-hidden min-h-0"
           >
-            <span className="label block mb-3">Experience</span>
-            <div className="space-y-3">
+            <span className="label block mb-4">Experience</span>
+            <div className="space-y-4">
               {jobs.map((job) => (
-                <div key={job.num} className="flex gap-2.5">
-                  <div className="text-[var(--primary)] font-['Space_Grotesk'] font-bold text-sm">{job.num}</div>
+                <div key={job.num} className="flex gap-3">
+                  <div className="text-[var(--primary)] font-['Space_Grotesk'] font-bold text-base">{job.num}</div>
                   <div>
-                    <h4 className="font-['Space_Grotesk'] font-bold text-xs tracking-tight leading-tight">{job.company}</h4>
-                    <p className="text-[10px] text-[var(--secondary)]">{job.role} &middot; {job.desc}</p>
+                    <h4 className="font-['Space_Grotesk'] font-bold text-sm tracking-tight leading-tight">{job.company}</h4>
+                    <p className="text-[11px] text-[var(--secondary)]">{job.role} &middot; {job.desc}</p>
                   </div>
                 </div>
               ))}
@@ -116,13 +112,13 @@ export default function Home() {
 
           {/* About / Stack — 4col, 2row */}
           <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible" id="about"
-            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-5 overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-4 md:row-span-2 glass-card rounded-[1.5rem] p-6 overflow-hidden min-h-0"
           >
-            <span className="label block mb-2">About</span>
-            <div className="space-y-3">
+            <span className="label block mb-3">About</span>
+            <div className="space-y-4">
               {Object.entries(skills).map(([category, items]) => (
                 <div key={category}>
-                  <p className="text-[9px] font-['Space_Grotesk'] font-bold text-[var(--primary)] mb-1.5 uppercase tracking-widest">{category}</p>
+                  <p className="text-[10px] font-['Space_Grotesk'] font-bold text-[var(--primary)] mb-2 uppercase tracking-widest">{category}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {items.map((item) => (<span key={item} className="chip">{item}</span>))}
                   </div>
@@ -133,24 +129,24 @@ export default function Home() {
 
           {/* Education — 3col, 3row */}
           <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" id="education"
-            className="col-span-12 md:col-span-3 md:row-span-3 glass-card rounded-[1.5rem] p-5 flex flex-col justify-between overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-3 md:row-span-3 glass-card rounded-[1.5rem] p-6 flex flex-col justify-between overflow-hidden min-h-0"
           >
             <div>
-              <span className="label block mb-2">Education</span>
-              <h3 className="font-['Space_Grotesk'] font-bold text-base leading-tight">University of Prince Edward Island</h3>
+              <span className="label block mb-3">Education</span>
+              <h3 className="font-['Space_Grotesk'] font-bold text-lg leading-tight">University of Prince Edward Island</h3>
               <p className="text-sm text-[var(--secondary)] mt-1">B.Sc. Honours in Computer Science</p>
-              <p className="text-[11px] text-[var(--outline)] mt-0.5">Minor: Physics</p>
+              <p className="text-xs text-[var(--outline)] mt-0.5">Minor: Physics</p>
             </div>
             <div>
               <div className="flex items-center gap-2 pt-3 border-t border-white/20">
                 <span className="material-symbols-outlined text-[var(--primary)] text-lg">school</span>
-                <span className="font-['Space_Grotesk'] text-[10px] font-medium text-[var(--on-surface-variant)] uppercase tracking-widest">Honours Distinction</span>
+                <span className="font-['Space_Grotesk'] text-[11px] font-medium text-[var(--on-surface-variant)] uppercase tracking-widest">Honours Distinction</span>
               </div>
               <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/20">
                 <span className="material-symbols-outlined text-[var(--primary)] text-lg">music_note</span>
                 <div>
-                  <p className="font-['Space_Grotesk'] text-[10px] font-medium text-[var(--on-surface-variant)] uppercase tracking-widest">Harris Institute</p>
-                  <p className="text-[10px] text-[var(--secondary)]">Sound Engineering</p>
+                  <p className="font-['Space_Grotesk'] text-[11px] font-medium text-[var(--on-surface-variant)] uppercase tracking-widest">Harris Institute</p>
+                  <p className="text-[11px] text-[var(--secondary)]">Sound Engineering</p>
                 </div>
               </div>
             </div>
@@ -158,20 +154,20 @@ export default function Home() {
 
           {/* Projects — 5col, 2row */}
           <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible" id="projects"
-            className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-[1.5rem] p-5 overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-[1.5rem] p-6 overflow-hidden min-h-0"
           >
-            <span className="label block mb-2">Projects</span>
-            <div className="flex gap-2 overflow-x-auto no-scrollbar">
+            <span className="label block mb-3">Projects</span>
+            <div className="flex gap-2.5 overflow-x-auto no-scrollbar">
               {projects.map((project) => (
                 <a key={project.title} href={project.url} target="_blank" rel="noopener noreferrer"
-                  className="flex-shrink-0 w-36 glass-inner-border bg-white/30 rounded-xl p-3 hover:bg-white/50 transition-colors group"
+                  className="flex-shrink-0 w-40 glass-inner-border bg-white/30 rounded-xl p-3.5 hover:bg-white/50 transition-colors group"
                 >
-                  <span className="font-['Space_Grotesk'] text-[8px] uppercase tracking-widest text-[var(--primary)] font-bold">{project.tag}</span>
-                  <h4 className="font-['Space_Grotesk'] font-bold text-[11px] mt-1 leading-snug">{project.title}</h4>
-                  <p className="text-[9px] text-[var(--secondary)] mt-1 leading-relaxed line-clamp-2">{project.description}</p>
-                  <div className="flex items-center gap-1 mt-1.5">
-                    <span className="text-[9px] text-[var(--outline)] group-hover:text-[var(--primary)] transition-colors">View</span>
-                    <span className="material-symbols-outlined text-[10px] text-[var(--outline)] group-hover:text-[var(--primary)] transition-all">arrow_outward</span>
+                  <span className="font-['Space_Grotesk'] text-[9px] uppercase tracking-widest text-[var(--primary)] font-bold">{project.tag}</span>
+                  <h4 className="font-['Space_Grotesk'] font-bold text-xs mt-1.5 leading-snug">{project.title}</h4>
+                  <p className="text-[10px] text-[var(--secondary)] mt-1 leading-relaxed line-clamp-2">{project.description}</p>
+                  <div className="flex items-center gap-1 mt-2">
+                    <span className="text-[10px] text-[var(--outline)] group-hover:text-[var(--primary)] transition-colors">View</span>
+                    <span className="material-symbols-outlined text-xs text-[var(--outline)] group-hover:text-[var(--primary)] transition-all">arrow_outward</span>
                   </div>
                 </a>
               ))}
@@ -180,15 +176,15 @@ export default function Home() {
 
           {/* Contact — 4col, 1row */}
           <motion.div custom={6} variants={fadeUp} initial="hidden" animate="visible"
-            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-[1.5rem] px-5 py-3 flex items-center justify-between group hover:bg-white/40 transition-colors overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-[1.5rem] px-6 py-3 flex items-center justify-between group hover:bg-white/40 transition-colors overflow-hidden min-h-0"
           >
             <a href="mailto:tmerrien@outlook.com" className="flex items-center gap-4 w-full">
-              <div className="w-9 h-9 rounded-xl bg-[var(--primary)] flex items-center justify-center text-[var(--on-primary)] flex-shrink-0">
-                <span className="material-symbols-outlined text-lg">mail</span>
+              <div className="w-10 h-10 rounded-xl bg-[var(--primary)] flex items-center justify-center text-[var(--on-primary)] flex-shrink-0">
+                <span className="material-symbols-outlined text-xl">mail</span>
               </div>
               <div>
                 <h4 className="font-['Space_Grotesk'] font-bold text-sm">Get in Touch</h4>
-                <p className="text-[11px] text-[var(--secondary)]">AI/agent engineering &mdash; remote from Ottawa</p>
+                <p className="text-xs text-[var(--secondary)]">AI/agent engineering &mdash; remote from Ottawa</p>
               </div>
             </a>
             <div className="flex gap-3 flex-shrink-0 ml-3">
