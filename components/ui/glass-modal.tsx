@@ -30,7 +30,7 @@ export function GlassModal({ open, onClose, children }: GlassModalProps) {
             animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, y: 20, scale: 0.97, filter: 'blur(8px)' }}
             transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-            className="fixed inset-4 md:inset-12 lg:inset-20 z-50 overflow-hidden rounded-3xl"
+            className="fixed inset-0 md:inset-12 lg:inset-20 z-50 overflow-hidden md:rounded-3xl"
             style={{
               background: 'rgba(255, 255, 255, 0.65)',
               backdropFilter: 'blur(48px) saturate(1.4)',
@@ -48,7 +48,7 @@ export function GlassModal({ open, onClose, children }: GlassModalProps) {
             </button>
 
             {/* Scrollable content */}
-            <div className="h-full overflow-y-auto p-8 md:p-12 no-scrollbar">
+            <div className="h-full overflow-y-auto p-6 pt-16 md:p-12 md:pt-12 -webkit-overflow-scrolling-touch">
               {children}
             </div>
           </motion.div>

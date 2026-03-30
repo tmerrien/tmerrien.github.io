@@ -102,7 +102,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="relative z-10 px-4 md:px-5 pt-14 md:pt-5 pb-10 md:pb-5 w-full h-auto md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
+      <div className="relative z-10 px-4 md:px-5 pt-16 md:pt-5 pb-4 md:pb-5 w-full min-h-screen md:h-screen md:overflow-hidden">
         <motion.div
           variants={container}
           initial="hidden"
@@ -112,12 +112,12 @@ export default function Home() {
 
           {/* Hero / Profile */}
           <motion.div variants={card}
-            className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-5 md:row-span-2 glass-card rounded-2xl md:rounded-3xl p-6 md:p-10 flex flex-col justify-between relative overflow-hidden min-h-0"
           >
             <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-[var(--primary-accent)]/10 blur-3xl" />
             <div className="relative">
               <span className="label block mb-3">Portfolio</span>
-              <h1 className="font-['Space_Grotesk'] text-5xl md:text-6xl font-bold tracking-tighter leading-[0.95]">
+              <h1 className="font-['Space_Grotesk'] text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95]">
                 Tanguy<br />Merrien
               </h1>
               <p className="text-[var(--secondary)] text-xl mt-3 max-w-sm leading-relaxed">
@@ -140,20 +140,20 @@ export default function Home() {
 
           {/* Featured Research */}
           <motion.div variants={card}
-            className="col-span-12 md:col-span-7 md:row-span-2 glass-card accent-glow rounded-3xl relative overflow-hidden min-h-0 group cursor-pointer"
+            className="col-span-12 md:col-span-7 md:row-span-2 glass-card accent-glow rounded-2xl md:rounded-3xl relative overflow-hidden min-h-0 group cursor-pointer"
           >
             <img src="/images/research-bg.jpg" alt=""
               className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
             />
             <a href="https://github.com/tmerrien/oz-upei" target="_blank" rel="noopener noreferrer"
-              className="relative p-10 h-full flex flex-col justify-between block"
+              className="relative p-6 md:p-10 h-full flex flex-col justify-between block"
             >
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-2 h-2 rounded-full bg-[var(--primary-accent)] animate-pulse" />
                   <span className="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-[var(--primary-accent)] font-bold">Featured Research</span>
                 </div>
-                <h2 className="font-['Space_Grotesk'] text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.05] max-w-lg">
+                <h2 className="font-['Space_Grotesk'] text-2xl md:text-5xl font-extrabold tracking-tighter leading-[1.05] max-w-lg">
                   WoZ Platform for LLM Evaluation
                 </h2>
                 <p className="text-[var(--secondary)] mt-5 text-lg leading-relaxed max-w-md">
@@ -172,7 +172,7 @@ export default function Home() {
           {/* Experience teaser — opens modal */}
           <motion.div variants={card}
             onClick={() => setModal('experience')}
-            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 overflow-hidden min-h-0 cursor-pointer group"
+            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-2xl md:rounded-3xl p-5 md:p-8 overflow-hidden min-h-0 cursor-pointer group"
           >
             <span className="label block mb-3">Experience</span>
             <div className="space-y-3">
@@ -194,7 +194,7 @@ export default function Home() {
           {/* Projects teaser — opens modal */}
           <motion.div variants={card}
             onClick={() => setModal('projects')}
-            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 overflow-hidden min-h-0 cursor-pointer group"
+            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-2xl md:rounded-3xl p-5 md:p-8 overflow-hidden min-h-0 cursor-pointer group"
           >
             <span className="label block mb-3">Projects</span>
             <div className="grid grid-cols-2 gap-2">
@@ -211,7 +211,7 @@ export default function Home() {
 
           {/* Stack + Contact */}
           <motion.div variants={card}
-            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-3xl p-8 flex flex-col justify-between overflow-hidden min-h-0"
+            className="col-span-12 md:col-span-4 md:row-span-1 glass-card rounded-2xl md:rounded-3xl p-5 md:p-8 flex flex-col justify-between overflow-hidden min-h-0"
           >
             <div>
               <span className="label block mb-3">Stack &amp; Contact</span>
