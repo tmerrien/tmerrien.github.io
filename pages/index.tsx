@@ -124,13 +124,16 @@ export default function Home() {
                 AI &amp; Software Engineer building production conversational AI systems, RAG pipelines, and agent architectures.
               </p>
             </div>
-            <div className="relative mt-auto pt-6 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/40">
+            <div className="relative mt-auto pt-6 flex items-center gap-5">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/40 flex-shrink-0">
                 <img src="/images/avatar.jpg" alt="" className="w-full h-full object-cover" />
               </div>
-              <div>
-                <p className="text-sm font-['Space_Grotesk'] font-bold text-[var(--on-surface)]">Ottawa, Canada</p>
-                <p className="text-sm text-[var(--primary-accent)] font-medium">Available for remote work</p>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-inner text-xs font-['Space_Grotesk'] font-medium text-[var(--on-surface-variant)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  Available
+                </span>
+                <span className="text-sm text-[var(--secondary)]">Remote &middot; Ottawa, Canada</span>
               </div>
             </div>
           </motion.div>
