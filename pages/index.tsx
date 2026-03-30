@@ -63,8 +63,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div id="top" className="px-4 md:px-8 pt-14 md:pt-4 pb-8 max-w-[1440px] mx-auto w-full h-[calc(100vh-48px)] md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
-        <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-[repeat(6,minmax(0,1fr))] gap-2.5 md:h-[calc(100vh-80px)]">
+      <div id="top" className="px-3 md:px-4 pt-14 md:pt-3 pb-10 md:pb-3 w-full h-auto md:h-screen overflow-y-auto md:overflow-hidden no-scrollbar">
+        <div className="grid grid-cols-12 auto-rows-auto md:grid-rows-[repeat(6,minmax(0,1fr))] gap-2.5 md:h-[calc(100vh-24px)]">
 
           {/* Profile */}
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible"

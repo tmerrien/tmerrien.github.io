@@ -63,9 +63,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       {/* Main Content */}
       <main className="pt-0">{children}</main>
 
-      {/* Footer */}
-      <footer className="fixed bottom-0 w-full py-3 border-t border-white/5 bg-[var(--surface)]/80 backdrop-blur-sm z-30">
-        <div className="flex justify-between items-center px-8 w-full max-w-[1440px] mx-auto">
+      {/* Footer — mobile only */}
+      <footer className="md:hidden py-6 border-t border-white/5">
+        <div className="flex justify-between items-center px-6">
           <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--outline-variant)]">
             &copy; {new Date().getFullYear()} Tanguy Merrien
           </span>
