@@ -37,11 +37,11 @@ export const SilkBackground = () => {
     const animate = () => {
       const { width, height } = canvas;
 
-      // White/light gradient base
+      // Cool gray gradient base
       const gradient = ctx.createLinearGradient(0, 0, width, height);
-      gradient.addColorStop(0, '#f0f4f8');
-      gradient.addColorStop(0.5, '#f9f9fb');
-      gradient.addColorStop(1, '#f0f4f8');
+      gradient.addColorStop(0, '#dce1e8');
+      gradient.addColorStop(0.5, '#e8ecf1');
+      gradient.addColorStop(1, '#d5dbe4');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -69,11 +69,10 @@ export const SilkBackground = () => {
           const rnd = noise(x, y);
           const intensity = Math.max(0, pattern - rnd / 15.0 * noiseIntensity);
 
-          // White silk: light grays with subtle blue tint
-          const base = 230;
-          const r = Math.floor(base + 20 * intensity);
-          const g = Math.floor(base + 22 * intensity);
-          const b = Math.floor(base + 25 * intensity);
+          // Visible silk: cool blue-gray tones
+          const r = Math.floor(210 + 28 * intensity);
+          const g = Math.floor(216 + 26 * intensity);
+          const b = Math.floor(226 + 22 * intensity);
 
           const index = (y * width + x) * 4;
           if (index < data.length) {
@@ -87,13 +86,13 @@ export const SilkBackground = () => {
 
       ctx.putImageData(imageData, 0, 0);
 
-      // Subtle radial depth overlay
+      // Radial depth — darker edges for vignette
       const overlayGradient = ctx.createRadialGradient(
         width / 2, height / 2, 0,
         width / 2, height / 2, Math.max(width, height) / 2
       );
-      overlayGradient.addColorStop(0, 'rgba(255, 255, 255, 0.15)');
-      overlayGradient.addColorStop(1, 'rgba(240, 244, 248, 0.3)');
+      overlayGradient.addColorStop(0, 'rgba(255, 255, 255, 0.05)');
+      overlayGradient.addColorStop(1, 'rgba(180, 190, 205, 0.2)');
 
       ctx.fillStyle = overlayGradient;
       ctx.fillRect(0, 0, width, height);

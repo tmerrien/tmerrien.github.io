@@ -2,28 +2,25 @@
 @import "tw-animate-css";
 
 :root {
-  --surface: #f9f9fb;
-  --surface-container: #ebeef2;
-  --surface-container-low: #f2f4f6;
-  --surface-container-high: #e4e9ee;
-  --surface-container-highest: #dde3e9;
-  --surface-container-lowest: #ffffff;
-  --on-surface: #2d3338;
-  --on-surface-variant: #596065;
-  --primary: #5f5e5e;
-  --primary-dim: #535252;
-  --on-primary: #faf7f6;
-  --outline: #757c81;
-  --outline-variant: #acb3b8;
-  --secondary: #5e5f5f;
-  --inverse-surface: #0c0e10;
+  --bg: #e8ecf1;
+  --on-surface: #1a1d21;
+  --on-surface-variant: #4a5058;
+  --primary: #3b3a3a;
+  --primary-accent: #4f6ef7;
+  --on-primary: #f8f8f8;
+  --outline: #6b737a;
+  --outline-variant: #9ca3ab;
+  --secondary: #52565b;
+  --surface-glass: rgba(255, 255, 255, 0.45);
+  --surface-glass-hover: rgba(255, 255, 255, 0.6);
+  --border-glass: rgba(255, 255, 255, 0.5);
 }
 
 body {
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f9f9fb;
+  background: var(--bg);
   color: var(--on-surface);
   overflow: hidden;
   height: 100vh;
@@ -33,62 +30,73 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Glass card system */
+/* Glass card — visible frosted glass over tinted bg */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(48px);
-  -webkit-backdrop-filter: blur(48px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 60px 0 rgba(31, 38, 135, 0.05);
+  background: var(--surface-glass);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border: 1px solid var(--border-glass);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.6) inset,
+    0 8px 40px -8px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transition: background 0.3s ease;
+  background: var(--surface-glass-hover);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+    0 12px 48px -8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
 }
 
-.glass-inner-border {
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.glass-inner {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* Label typography */
 .label {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   color: var(--outline);
-  opacity: 0.7;
 }
 
 /* Pill chip */
 .chip {
-  padding: 5px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.4);
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 9999px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  color: var(--on-surface-variant);
+}
+
+/* Accent glow for featured card */
+.accent-glow {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.5) inset,
+    0 0 60px -12px rgba(79, 110, 247, 0.15),
+    0 8px 40px -8px rgba(0, 0, 0, 0.1);
 }
 
 /* Focus states */
 a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--primary-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Scrollbar hide for main content */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+/* Scrollbar hide */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .glass-card:hover { background: rgba(255, 255, 255, 0.25); }
+  .glass-card:hover { transform: none; }
 }
