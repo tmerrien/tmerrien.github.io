@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, useCallback } from 'react';
+import { SilkBackground } from './ui/silk-background';
 
 const navLinks = [
   { label: 'Research', href: '#research' },
@@ -34,7 +35,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Animated silk background */}
+      <SilkBackground />
+
       {/* Top Navigation — mobile only (md: hidden) */}
       <nav className="md:hidden fixed top-0 w-full z-50 bg-white/5 backdrop-blur-[40px] border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.04)]">
         <div className="flex justify-between items-center px-6 h-12 w-full">
