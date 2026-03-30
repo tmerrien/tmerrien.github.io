@@ -21,7 +21,14 @@ export default function Layout({ children }: { children: ReactNode }) {
     e.preventDefault();
     const id = href.replace('#', '');
     const el = document.getElementById(id);
-    if (el) {
+    if (!el) return;
+
+    // Find the scrollable parent (the #top container)
+    const scrollContainer = document.getElementById('top');
+    if (scrollContainer) {
+      const offset = el.offsetTop - scrollContainer.offsetTop;
+      scrollContainer.scrollTo({ top: offset, behavior: 'smooth' });
+    } else {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
@@ -86,7 +93,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <main className="pt-12">{children}</main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 w-full py-4 border-t border-white/5 bg-[var(--surface)]/80 backdrop-blur-sm z-30">
+      <footer className="fixed bottom-0 w-full py-3 border-t border-white/5 bg-[var(--surface)]/80 backdrop-blur-sm z-30">
         <div className="flex justify-between items-center px-8 w-full max-w-[1440px] mx-auto">
           <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--outline-variant)]">
             &copy; {new Date().getFullYear()} Tanguy Merrien
